@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="main-box">
+                <div class="box-logo">
+                    <label for="">Todo-List</label>
+                    <div class="box-input">
+                        <input type="text" name="" id="inputtext" autocomplete="off">
+                        <button id="btn" onclick="addtask()">click</button>
+                    </div>
+                </div>
+                <div class="box-list">
+                    <ul id="ul1">
+                        <!-- <li>Home</li>
+                        <li>about</li>
+                        <li>contact</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const input = document.getElementById("inputtext");
+        const btn = document.getElementById("btn");
+        const listbox = document.getElementById("ul1");
+
+        function addtask() {
+            if (input.value === '') {
+                alert("fill the task");
+            }
+            else {
+                let li = document.createElement("li")
+                li.innerHTML = input.value;
+                listbox.appendChild(li);
+
+                let span = document.createElement("span");
+                span.innerHTML="\u00d7";
+                li.appendChild(span);
+            }
+            input.value = "";
+            savedata();
+        }
+        listbox.addEventListener("click",function(e){
+            console.log(e)
+            if(e.target.tagName === "SPAN"){
+                e.target.parentElement.remove();
+                savedata();
+            }
+        },false)
+
+        function savedata(){
+            localStorage.setItem("data",ul1.innerHTML)
+        }
+        function showtask(){
+            ul1.innerHTML=localStorage.getItem("data");
+        }
+        showtask(); 
+    </script>
+</body>
+
+</html>
