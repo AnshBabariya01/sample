@@ -18,10 +18,11 @@
 }
 
 .box .main-box {
-    /* height: 200px; */
-    width: 250px;
+    height: 200px;
+    width: 300px;
     background-color: aliceblue;
     border-radius: 10px;
+    overflow: scroll;
 }
 
 .main-box .box-logo {
